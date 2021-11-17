@@ -4,15 +4,21 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(uniqueConstraints={
+        @UniqueConstraint(columnNames = {"phaseId", "locId","matId","batchId"})
+})
 public class Config implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
     private Long id;
+    @Column(name = "phaseId")
     private String phaseId;
+    @Column(name = "locId")
     private String locId;
+    @Column(name = "matId")
     private String matId;
+    @Column(name = "batchId")
     private String batchId;
 
     public Config(String phaseId, String locId, String matId, String batchId) {

@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface ConfigRepo extends JpaRepository<Config, Long> {
     Optional<Config> findConfigById(Long id);
+    boolean exists(Config config);
 }

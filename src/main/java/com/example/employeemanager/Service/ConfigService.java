@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class ConfigService {
 
     public void saveFile(MultipartFile file) {
         try {
-            logger.warning("HELLO");
+            logger.info("HELLO");
             List<Config> configs = excelToTutorials(file.getInputStream());
             logger.warning(configs.get(0).getPhaseId());
             configRepo.saveAll(configs);
