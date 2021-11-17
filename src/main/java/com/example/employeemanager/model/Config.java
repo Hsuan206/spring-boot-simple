@@ -4,58 +4,31 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(uniqueConstraints={
-        @UniqueConstraint(columnNames = {"phaseId", "locId","matId","batchId"})
-})
 public class Config implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "phaseId")
-    private String phaseId;
-    @Column(name = "locId")
-    private String locId;
-    @Column(name = "matId")
+    @EmbeddedId
+    private ConfigPK id;
     private String matId;
-    @Column(name = "batchId")
     private String batchId;
 
-    public Config(String phaseId, String locId, String matId, String batchId) {
-        this.phaseId = phaseId;
-        this.locId = locId;
+    public Config(ConfigPK id, String matId, String batchId) {
+        this.id = id;
         this.matId = matId;
         this.batchId = batchId;
     }
+
 
     public Config() {
 
     }
 
-    public Long getId() {
+    public ConfigPK getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ConfigPK id) {
         this.id = id;
     }
-
-    public String getPhaseId() {
-        return phaseId;
-    }
-
-    public void setPhaseId(String phaseId) {
-        this.phaseId = phaseId;
-    }
-
-    public String getLocId() {
-        return locId;
-    }
-
-    public void setLocId(String locId) {
-        this.locId = locId;
-    }
-
     public String getMatId() {
         return matId;
     }
