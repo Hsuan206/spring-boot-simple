@@ -22,19 +22,19 @@ import java.util.logging.Logger;
 
 @Service
 public class ConfigService {
-//    Logger logger;
-//    private final ConfigRepo configRepo;
-//    @Autowired
-//    public ConfigService(ConfigRepo configRepo) {
-//        this.configRepo = configRepo;
-//    }
-//
-//    public List<Config> findAllConfigs() {
-//        return configRepo.findAll();
-//    }
-//    public Config addConfig(Config config) {
-//        return configRepo.save(config);
-//    }
+    Logger logger;
+    private final ConfigRepo configRepo;
+    @Autowired
+    public ConfigService(ConfigRepo configRepo) {
+        this.configRepo = configRepo;
+    }
+
+    public List<Config> findAllConfigs() {
+        return configRepo.findAll();
+    }
+    public Config addConfig(Config config) {
+        return configRepo.save(config);
+    }
 //    public Config updateConfig(Long id, Config config) {
 //        Config newConfig = new Config();
 //        newConfig.setId(id);

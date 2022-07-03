@@ -8,7 +8,9 @@ public class Config implements Serializable {
 
     @EmbeddedId
     private ConfigPK id;
+    @Column(name = "MAT_ID")
     private String matId;
+    @Column(name = "BATCH_ID")
     private String batchId;
 
     public Config(ConfigPK id, String matId, String batchId) {

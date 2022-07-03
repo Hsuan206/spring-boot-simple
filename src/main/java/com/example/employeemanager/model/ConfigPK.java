@@ -1,12 +1,14 @@
 package com.example.employeemanager.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
 public class ConfigPK implements Serializable {
-
+    @Column(name = "PHASE_ID")
     private String phaseId;
+    @Column(name = "LOC_ID")
     private String locId;
 
     public ConfigPK(String phaseId, String locId) {

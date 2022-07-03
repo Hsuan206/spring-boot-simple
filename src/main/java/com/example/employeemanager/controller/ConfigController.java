@@ -21,9 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+
 @RestController
 @RequestMapping("/api")
 public class ConfigController {
@@ -31,15 +30,15 @@ public class ConfigController {
     private final ConfigService configService;
     private final ConfigRepo configRepo;
     @Autowired
-    public ConfigController(ConfigService configService, ConfigRepo configRepo) {
+    public ConfigController(@Autowired ConfigService configService, @Autowired ConfigRepo configRepo) {
         this.configService = configService;
         this.configRepo = configRepo;
     }
-//    @GetMapping("/configs")
-//    public ResponseEntity<List<Config>> getAllConfigs () {
-//        List<Config> configs = configService.findAllConfigs();
-//        return new ResponseEntity<>(configs, HttpStatus.OK);
-//    }
+    @GetMapping("/configs")
+    public ResponseEntity<List<Config>> getAllConfigs () {
+        List<Config> configs = configService.findAllConfigs();
+        return new ResponseEntity<>(configs, HttpStatus.OK);
+    }
 //    @GetMapping("/configs/{id}")
 //    public ResponseEntity<Config> getConfigById (@PathVariable("id") Long id) {
 //        Config config = configService.findConfigById(id);
@@ -61,6 +60,25 @@ public class ConfigController {
 //        configService.deleteConfig(id);
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
+//    public static void checkMagazine(int[] arr) {
+//        int pointer = 0;
+//        int endIdx = 2;
+//        int sum = 0;
+//        int max_sum = -10000;
+//        Map<List<Integer>, Number> hashMap = new HashMap<>();
+//        for(int i = pointer; i<arr.length; i++) {
+//            sum = 0;
+//            if()
+//            for(int j = endIdx; i<arr.length; j+=2) {
+//                sum += arr[j];
+//                if(sum>max_sum){
+//                    max_sum = sum;
+//                }
+//            }
+//
+//        }
+//    }
+
     @PostMapping("/configs/upload")
     public ResponseEntity<?> uploadConfig (@RequestParam("Upload") MultipartFile file) {
         logger.debug("=====儲存檔案====");
@@ -153,3 +171,4 @@ public class ConfigController {
     }
 
 }
+
